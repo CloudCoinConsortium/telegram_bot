@@ -1,6 +1,10 @@
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from help import help
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def command(update, context):
     # Get the user's message
@@ -37,7 +41,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("5737629326:AAEpF4k5XrWzniyuS3wfawgQYYUcTvRKLsA", use_context=True)
+    updater = Updater(os.environ['BOT_TOKEN'], use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
