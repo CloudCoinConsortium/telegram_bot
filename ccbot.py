@@ -1,6 +1,7 @@
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from help import help
+from bank import bank
 from dotenv import load_dotenv
 import os
 
@@ -48,6 +49,7 @@ def main():
 
     # Add a command handler to handle the /echo command
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("bank", bank))
     dp.add_handler(CommandHandler("echo", command))
 
     # Add a message handler to handle messages with image attachments
