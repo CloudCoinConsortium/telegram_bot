@@ -1,4 +1,7 @@
 from utils import getwalletname
+from deposit import deposit
+from balance import balance
+
 def bank(update, context):
     message = update.message.text
     
@@ -16,6 +19,11 @@ def phrasehandler(phrases, update, context):
         phrase = phrases[0]
         if phrase == "whatsmywallet":
             update.message.reply_text("Your wallet name is " + getwalletname(update=update))
+        elif(phrase == "deposit"):
+            deposit(phrases,update=update, context=context)
+        elif(phrase == "balance"):
+            wbalance = balance(update=update)
+            update.message.reply_text("Your wallet balance is " + str(wbalance))
     else:
         print('can not proceed')
 
