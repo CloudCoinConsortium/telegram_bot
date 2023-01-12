@@ -3,15 +3,30 @@ from deposit import deposit
 from balance import balance
 
 def bank(update, context):
-    message = update.message.text
-    
+    message = update.message
     # Split the message into words
-    phrases = message.split()
+    if(update.message.photo):
+        photos = update.message.photo
+        #print('Photo:', photos)
+        #print('No of photos:', len(photos))
+        print('caption', message.caption)
+        caption = ''
+        if(message.caption):
+            caption = message.caption
+        elif(message.caption_html):
+            caption = message.caption_html
+        else:
+            caption = '/bank deposit'
+        phrases = caption.split()
+    else:
+        print('Message:',message.text)
+        phrases = message.text.split()
+
     phrases.pop(0)
     phrasehandler(phrases, update=update, context=context)
     user = update.message.from_user
-    print(message)
-    print(phrases)
+    #print(message)
+    #print(phrases)
 
 def phrasehandler(phrases, update, context):
     if bool(len(phrases)):

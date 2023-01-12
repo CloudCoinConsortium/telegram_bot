@@ -51,9 +51,10 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("bank", bank))
     dp.add_handler(CommandHandler("echo", command))
+    dp.add_handler(MessageHandler(Filters.photo, bank))
 
     # Add a message handler to handle messages with image attachments
-    dp.add_handler(MessageHandler(Filters.photo, command))
+    # dp.add_handler(MessageHandler(Filters.photo, command))
 
     # Start the Bot
     updater.start_polling()
