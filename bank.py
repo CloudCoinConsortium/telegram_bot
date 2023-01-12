@@ -3,6 +3,9 @@ from deposit import deposit
 from balance import balance
 
 def bank(update, context):
+    if(getwalletname(update=update) == None):
+        update.message.reply_text('You dont have a user name.')
+        return
     message = update.message
     # Split the message into words
     if(update.message.photo):
